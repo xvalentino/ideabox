@@ -6,10 +6,16 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to user_path(user)
     else
+      flash[:errors] = "Invalid Login"
+      render :new
     end
   end
 
-  # Don't need yet
+  def destroy
+    session.clear
+    flash[:log_out] = "Successfully Logged Out!"
+    redirect_to login_path
+  end
 
 
 

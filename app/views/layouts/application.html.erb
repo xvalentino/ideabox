@@ -8,6 +8,15 @@
 </head>
 <body>
 
+  <% if flash[:log_out] %>
+    <div id="log_out">
+      <%= flash[:log_out] %>
+    </div>
+  <% elsif flash[:errors] %>
+    <%= flash[:errors] %>
+  <% end %>
+
+
 <%= yield %>
 
 </body>
