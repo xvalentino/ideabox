@@ -1,6 +1,6 @@
 <h1 id="banner">Welcome, <%=  current_user.username %> to your IdeaBox</h1>
 <% current_user.ideas.each do |idea| %>
-  <%= idea.title %>
+  <%= link_to idea.title, idea_path(idea) %>
 <% end %>
 <br>
 <%= link_to "Log Out", logout_path %>
