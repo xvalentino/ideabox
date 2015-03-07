@@ -3,12 +3,14 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    authorize! :read, @user
   end
+
+  private
 
   def authorize
     if current_user.nil?
-      redirect_to login_path
-      flash[:notice] = "Not authorized"
+      redirect_to(login_path, notice: "Not authorized")
     end
   end
 
